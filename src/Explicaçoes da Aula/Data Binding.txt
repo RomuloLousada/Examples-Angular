@@ -1,0 +1,24 @@
+Data Binding:
+É possível utilizar variáveis criadas dentro da classe no template,
+através da utilização de {{nome da variável}}.
+
+Event Binding:
+Também é possível realizar chamada das funções da classe, no exemplo do counter,
+um evento (click) foi adicionado a tag <button> chamando a função increment().
+
+Essa função incrementa o valor da variável counter, sem precisar manipular
+diretamente o DOM.
+
+Property Binding:
+Uma propriedade da tag pode ser atualizada automaticamente através de regra
+definida na sua declaração:
+
+No exemplo, o <button> teve uma propriedade "disabled" adicionada. Essa tag
+por padrão desabilita o botão, porém, ao adicionar ela entre colchetes,
+por exemplo: [disabled], é possível atribuir a ela uma condição que, caso
+retorne true, irá desabilitar o botão, e caso false, deixa o botão clicável.
+
+[disabled]="counter >= 10".
+
+Neste exemplo, quando a variável counter declarada na classe do componente
+atingir o valor 10, ela irá desabilitar o botão.

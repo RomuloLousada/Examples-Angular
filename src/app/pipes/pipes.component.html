@@ -1,0 +1,93 @@
+<p>
+    ===== PIPES: =====
+    <button *ngIf="!visible" (click)="toggleVisibility()">+</button>
+    <button *ngIf="visible" (click)="toggleVisibility()">-</button>
+</p>
+<div *ngIf="visible">
+    <h2>Standard Pipes</h2>
+    <div>
+        <p>
+            Lowercase/Uppercase
+            <button *ngIf="!visibleLowerUpper" (click)="visibleLowerUpper = !visibleLowerUpper">+</button>
+            <button *ngIf="visibleLowerUpper" (click)="visibleLowerUpper = !visibleLowerUpper">-</button>
+        </p>
+        <div *ngIf="visibleLowerUpper">
+            <p> Initial String: {{randomString}}</p>
+            <p> Lowercase: {{randomString | lowercase}} </p>
+            <p> Uppercase: {{randomString | uppercase}} </p>
+        </div>
+    </div>
+    <div>
+        <p>
+            Numbers
+            <button *ngIf="!visibleNumbers" (click)="visibleNumbers = !visibleNumbers">+</button>
+            <button *ngIf="visibleNumbers" (click)="visibleNumbers = !visibleNumbers">-</button>
+        </p>
+        <div *ngIf="visibleNumbers">
+            <p> Initial Number: {{randomNumber}}</p>
+            <p> Format '5.1-2': {{randomNumber | number:'5.1-2'}} </p>
+            <p> Format '12.1-5': {{randomNumber | number:'12.1-5'}} </p>
+        </div>
+    </div>
+    <div>
+        <p>
+            Date
+            <button *ngIf="!visibleDate" (click)="visibleDate = !visibleDate">+</button>
+            <button *ngIf="visibleDate" (click)="visibleDate = !visibleDate">-</button>
+        </p>
+        <div *ngIf="visibleDate">
+            <p> Initial Date (Today): {{randomDate}}</p>
+            <p> Format 'dd/MM/yyyy hh:mm:ss': {{randomDate | date:'dd/MM/yyyy hh:mm:ss'}} </p>
+            <p> Format 'short': {{randomDate | date:'short'}} </p>
+        </div>
+    </div>
+
+    <h2>Custom Pipes</h2>
+    <div>
+        <p>
+            CEP
+            <button *ngIf="!visibleCep" (click)="visibleCep = !visibleCep">+</button>
+            <button *ngIf="visibleCep" (click)="visibleCep = !visibleCep">-</button>
+        </p>
+        <div *ngIf="visibleCep">
+            <p> Valid Cep: {{validCep}}</p>
+            <p> Valid Cep Formatted: {{validCep | cep}} </p>
+            <p> Invalid Cep: {{invalidCep}}</p>
+            <p> Invalid Cep Formatted: {{invalidCep | cep}} </p>
+        </div>
+    </div>
+    <div>
+        <p>
+            CPF / CNPJ
+            <button *ngIf="!visibleCpfCnpj" (click)="visibleCpfCnpj = !visibleCpfCnpj">+</button>
+            <button *ngIf="visibleCpfCnpj" (click)="visibleCpfCnpj = !visibleCpfCnpj">-</button>
+        </p>
+        <div *ngIf="visibleCpfCnpj">
+            <p> CPF: {{randomCpf}}</p>
+            <p> Formatted CPF: {{randomCpf | cpfcnpj:'cpf'}} </p>
+            <p> CNPJ: {{randomCnpj}}</p>
+            <p> Formatted CNPJ: {{randomCnpj | cpfcnpj:'cnpj'}} </p>
+        </div>
+    </div>
+
+    <h2>Impure Pipe</h2>
+    <div>
+        <p>
+            Impure Pipe (pure: false)
+            <button *ngIf="!visibleImpure" (click)="visibleImpure = !visibleImpure">+</button>
+            <button *ngIf="visibleImpure" (click)="visibleImpure = !visibleImpure">-</button>
+        </p>
+        <div *ngIf="visibleImpure">
+            <input type="text" [(ngModel)]="newString">
+            <button (click)="addStringInArray()">+</button>
+
+            <ul>
+                <li *ngFor="let string of strings">{{string}}</li>
+            </ul>
+
+            <p>
+                Array concatenado: {{strings | impure:', '}}
+            </p>
+        </div>
+    </div>
+</div>

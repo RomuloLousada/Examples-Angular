@@ -1,0 +1,53 @@
+<p>
+    ===== BACKEND: =====
+    <button *ngIf="!visible" (click)="toggleVisibility()">+</button>
+    <button *ngIf="visible" (click)="toggleVisibility()">-</button>
+</p>
+<div *ngIf="visible">
+    <p>
+        É necessário subir o servidor pelo comando: json-server --watch backend.json
+    </p>
+
+    <mat-toolbar color="primary">
+        <span>Cardápio</span>
+    </mat-toolbar>
+
+    <form [formGroup]="form" (ngSubmit)="addProduct()">
+        <mat-form-field appearance="standard">
+            <mat-label>Produto</mat-label>
+            <input matInput formControlName="nome" placeholder="Nome do Produto">
+        </mat-form-field>
+        <mat-form-field class="preco" appearance="standard">
+            <mat-label>Preço</mat-label>
+            <span matPrefix>R$ &nbsp;</span>
+            <input matInput type="number" formControlName="preco" placeholder="Preço">
+        </mat-form-field>
+        <button type="submit" mat-raised-button [disabled]="form.invalid" color="primary">Adicionar</button>
+    </form>
+
+    <table mat-table [dataSource]="products">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let product">{{product.id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let product">{{product.nome}}</td>
+        </ng-container>
+        <ng-container matColumnDef="preco">
+            <th mat-header-cell *matHeaderCellDef>Preço</th>
+            <td mat-cell *matCellDef="let product">{{product.preco | number:"1.2-2"}}</td>
+        </ng-container>
+        <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef>Ações</th>
+            <td mat-cell *matCellDef="let product">
+                <button mat-icon-button (click)="deleteProduct(product)" aria-label="Excluir">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['id', 'nome', 'preco', 'acoes']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id', 'nome', 'preco', 'acoes']"></tr>
+    </table> 
+</div>

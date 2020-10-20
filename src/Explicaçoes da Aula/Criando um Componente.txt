@@ -1,0 +1,25 @@
+Forma Manual:
+
+- Foi criado um arquivo com nome "c1.componente.ts" na pasta app.
+
+- Adicionada a linha: import { Component } from '@angular/core'; Essa linha é obrigatória.
+
+- Declarar uma classe através de: export class C1Component. 
+O export é utilizada para permitir que a classe seja importada em outros módulos.
+
+- Criado o decorator: @Component({});
+
+- Configurações mínimas passadas para o decorator:
+-- selector: '' -> tag utilizada para criar o componente.
+-- templateUrl: '' -> arquivo que será utilizado como template do componente.
+
+- Criado o template html do componente.
+
+- Importada a nova classe no app.module.ts: import { C1Component } from './c1.component';
+- Adicionada a classe C1Component no array 'declarations' do app.module.
+
+- Utilização do template pelo selector em outros templates.
+
+Comando NG:
+
+- Comando no terminal: ng generate component c2

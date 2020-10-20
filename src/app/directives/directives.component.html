@@ -1,0 +1,47 @@
+<p>
+    ===== DIRECTIVES: =====
+    <button *ngIf="!visible" (click)="toggleVisibility()">+</button>
+    <button *ngIf="visible" (click)="toggleVisibility()">-</button>
+</p>
+<div *ngIf="visible">
+    <p>
+        ===== DIRECTIVES: NG IF =====
+    </p>
+    
+    <p>
+        <button (click)="toggle()">Alterna Visibilidade</button>
+    </p>
+    
+    <p *ngIf=show>
+        Exibe/Esconde Conteúdo
+    </p>
+    
+    <p>
+        ===== DIRECTIVES: NG FOR =====
+    </p>
+    
+    <div>
+        <input #taskDescription type="text" placeholder="Descrição da tarefa"/>
+        <button (click)="addTask(taskDescription.value)">Adicionar Tarefa</button>
+    </div>
+    
+    <div [ngSwitch]="tasks.length">
+        <div *ngSwitchCase=0>Nenhuma Tarefa</div>
+        <div *ngSwitchCase=1>Uma Tarefa</div>
+        <div *ngSwitchDefault>{{tasks.length}} Tarefas</div>
+    </div>
+    
+    <table>
+        <tr *ngFor="let task of tasks; let i = index">
+            <td>
+                <input type="checkbox" [checked]="task.done">
+            </td> 
+            <td>
+                {{task.description}}
+            </td>
+            <td>
+                <button (click)="deleteTask(i)">Excluir</button>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+<p>
+    ===== INPUT/OUTPUT PROPERTY =====
+    <button *ngIf="!visible" (click)="toggleVisibility()">+</button>
+    <button *ngIf="visible" (click)="toggleVisibility()">-</button>
+</p>
+<div *ngIf="visible">
+    <h2>
+        {{title}}
+    </h2>
+    <ng-content *ngIf="expanded"></ng-content>
+</div>

@@ -1,0 +1,19 @@
+<p>
+    ===== LIFE CYCLE: =====
+    <button *ngIf="!visible" (click)="toggleVisibility()">+</button>
+    <button *ngIf="visible" (click)="toggleVisibility()">-</button>
+</p>
+<div *ngIf="visible">
+    <p>
+        <button (click)="add()">Add Component</button>
+    </p>
+    <p>
+        <input type="text" [(ngModel)]="label">
+        <span> // Alterar o valor dispara o OnChange (console.log)</span>
+    </p>
+
+    <div *ngFor="let id of ids">
+        <app-cycle [label]=label [id]=id></app-cycle>
+        <button class="delete" (click)="remove(id)">X</button>
+    </div>
+</div>

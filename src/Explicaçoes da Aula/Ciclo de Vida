@@ -1,0 +1,13 @@
+Um componente possui algumas etapas de ciclo de vida, onde eventos podem ser
+definidos para tratar nestes pontos.
+
+=== Criação ===
+Ao criar o componente na tela, é possível através da implementação da interface
+ngOnInit, definir propriedades e ações que serão executadas neste momento.
+
+=== Destruição ===
+Ao remover o componente da tela, a interface ngOnDestroy permite executar
+tarefas neste momento.
+
+=== Alteração ===
+ngOnChanges é disparado sempre que um input property é alterado. 

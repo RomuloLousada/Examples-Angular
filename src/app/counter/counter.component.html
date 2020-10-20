@@ -1,0 +1,11 @@
+<p>
+    ===== COUNTER: =====
+    <button *ngIf="!visible" (click)="toggleVisibility()">+</button>
+    <button *ngIf="visible" (click)="toggleVisibility()">-</button>
+</p>
+<div *ngIf="visible">
+    <p>Título: {{titulo}}</p>
+    <p>Contador: {{counter}}</p>
+    
+    <button [disabled]="counter >= 10" (click)="increment()">Incrementar</button>
+</div>

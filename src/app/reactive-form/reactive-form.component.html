@@ -1,0 +1,23 @@
+<p>
+    ===== REACTIVE FORM: =====
+    <button *ngIf="!visible" (click)="toggleVisibility()">+</button>
+    <button *ngIf="visible" (click)="toggleVisibility()">-</button>
+</p>
+<div *ngIf="visible">
+    <h2>Formulário</h2>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmitForm()">
+        <label for="name">Nome *:
+            <input formControlName="name" type="text" name="name" id="name">
+            <span class="error" *ngIf="myForm.get('name').errors?.required"> Este campo deve ser preenchido e o valor não pode ser "Teste"</span>
+            <span class="error" *ngIf="myForm.get('name').errors?.forbiddenName"> O nome "Teste" está proibido</span>
+        </label>
+        <label for="address">Endereço:
+            <input formControlName="address" type="text" name="address" id="address">
+        </label>
+        <input [disabled]="!myForm.valid" type="submit" value="Salvar">
+    </form>
+
+    <p>Validações: {{myForm.valid}}</p>
+    <p>Valores: {{myForm.value | json}}</p>
+</div>
+
